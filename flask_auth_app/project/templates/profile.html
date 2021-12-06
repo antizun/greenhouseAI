@@ -29,12 +29,23 @@
       title: "Humidity",
       label: "%"
     });
+    g3 = new JustGage({
+      id: "g2",
+      value: {{hum}},
+      valueFontColor: "yellow",
+      titleFontColor: "yellow",
+      min: '0',
+      max: '100',
+      title: "Humidity Ground",
+      label: "%"
+    });    
   
   });
   </script>
 <h1>DHT Sensor Data </h1>
 <div id="g1"></div>
 <div id="g2"></div>
+<div id="g3"></div>
 <hr>
 <h3> Last Sensors Reading: {{ time }} ==> <a href="#" onclick="javascript:location.reload();" tarjet="_self" class="button">REFRESH</a></h3>	
 <hr>
