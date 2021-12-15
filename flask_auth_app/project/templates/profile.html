@@ -6,7 +6,7 @@
   Welcome, {{ name }}!
 </h1>
 <script>
-  var g1, g2;
+  var g1, g2,g3;
   document.addEventListener("DOMContentLoaded", function(event) {
     g1 = new JustGage({
       id: "g1",
@@ -30,7 +30,7 @@
       label: "%"
     });
     g3 = new JustGage({
-      id: "g2",
+      id: "g3",
       value: {{hum}},
       valueFontColor: "yellow",
       titleFontColor: "yellow",
