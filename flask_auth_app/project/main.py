@@ -92,7 +92,7 @@ if (numSamples > 101):
 def my_form_post():
     global numSamples 
     
-	if request.form['numSamples'] is not None:
+	if request.form['numSamples']:
 		numSamples = int (request.form['numSamples'])
 		numMaxSamples = maxRowsTable()
 		if (numSamples > numMaxSamples):
