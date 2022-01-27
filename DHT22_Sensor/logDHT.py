@@ -1,8 +1,10 @@
 import time
 import sqlite3
 import Adafruit_DHT
+import serial
+arduino = serial.Serial('/dev/ttyACM0/',9600)
 dbname='sensorsData.db'
-sampleFreq = 1*60 # time in seconds ==> Sample each 1 min
+sampleFreq = 1*5 # time in seconds ==> Sample each 1 min
 # get data from DHT sensor
 def getDHTdata():	
 	DHT22Sensor = Adafruit_DHT.DHT22
@@ -27,5 +29,7 @@ def main():
 		temp, hum = getDHTdata()
 		logData (temp, hum)
 		time.sleep(sampleFreq)
+		print(temp)
+		print(hum)
 # ------------ Execute program 
 main()
