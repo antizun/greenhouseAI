@@ -1,3 +1,5 @@
+import serial
+from pandas import notnull
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
 from . import db
@@ -23,7 +25,7 @@ curs=conn.cursor()
 
 lock = threading.Lock()
 #################################################################################
-
+arduino = serial.Serial('/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0', 9600)
 #################################################################################
 #FUNCTIONS
 def getLastData():
@@ -89,13 +91,20 @@ if (numSamples > 101):
 @main.route('/profile', methods=['POST'])
 def my_form_post():
     global numSamples 
-    numSamples = int (request.form['numSamples'])
-    numMaxSamples = maxRowsTable()
-    if (numSamples > numMaxSamples):
-        numSamples = (numMaxSamples-1)
-    
-    time, temp, hum = getLastData()
-    
+
+	if not request.form['numSamples'] is None:
+		numSamples = int (request.form['numSamples'])
+		numMaxSamples = maxRowsTable()
+		if (numSamples > numMaxSamples):
+			numSamples = (numMaxSamples-1)
+		time, temp, hum = getLastData()
+    if not request.form['riego_manual'] is None:
+		comando='H'
+		arduino.write(comando.encode())
+		arduino.close() #Finalizamos la comunicacion
+
+	if not request.form['ventilar'] is None:
+
     templateData = {
       'name'        :current_user.name,
 	  'time'		: time,
@@ -103,7 +112,9 @@ def my_form_post():
       'hum'			: hum,
       'numSamples'	: numSamples
 	}
-    return render_template('profile.html', **templateData) 
+    
+	
+	return render_template('profile.html', **templateData) 
 
 @main.route('/plot/temp')
 def plot_temp():
