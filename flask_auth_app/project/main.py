@@ -91,8 +91,8 @@ if (numSamples > 101):
 @main.route('/profile', methods=['POST'])
 def my_form_post():
     global numSamples 
-    
-	if request.form['numSamples']:
+    a=1
+	if a==1:
 		numSamples = int (request.form['numSamples'])
 		numMaxSamples = maxRowsTable()
 		if (numSamples > numMaxSamples):
