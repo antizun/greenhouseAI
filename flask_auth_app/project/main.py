@@ -91,19 +91,18 @@ if (numSamples > 101):
 @main.route('/profile', methods=['POST'])
 def my_form_post():
     global numSamples 
-
-	if not request.form['numSamples'] is None:
+    
+	if request.form['numSamples']!=None:
 		numSamples = int (request.form['numSamples'])
 		numMaxSamples = maxRowsTable()
 		if (numSamples > numMaxSamples):
 			numSamples = (numMaxSamples-1)
 		time, temp, hum = getLastData()
-    if not request.form['riego_manual'] is None:
+    
+    if request.form['riego_manual']!=None:
 		comando='H'
 		arduino.write(comando.encode())
 		arduino.close() #Finalizamos la comunicacion
-
-	if not request.form['ventilar'] is None:
 
     templateData = {
       'name'        :current_user.name,
