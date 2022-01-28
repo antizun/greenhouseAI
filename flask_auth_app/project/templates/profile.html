@@ -51,13 +51,16 @@
 <hr>
 <h3> HISTORICAL DATA </h3>
 <p> Enter number of samples to retrieve:
-<form method="POST">
+<form id="form1" method="POST">
   <input name="numSamples" value= {{numSamples}}>
   <input type="submit">
-
-  <input type="submit" value="riego_manual" id="riego_manual" name="riego_manual" /> 
-  <input type="submit" value="ventilacion" id="ventilar" name="ventilacion" />
 </form></p>
+<form id="form2" method="POST">
+  <input type="submit" value="riego_manual" id="riego_manual" name="riego_manual" /> 
+</form>
+<form id="form3" method="POST">
+  <input type="submit" value="ventilacion" id="ventilar" name="ventilacion" />
+</form>
 <hr>
 <img src="/plot/temp" alt="Image Placeholder" width="49%">
 <img src="/plot/hum" alt="Image Placeholder" width="49%">
