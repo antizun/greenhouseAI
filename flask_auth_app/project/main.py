@@ -91,13 +91,12 @@ if (numSamples > 101):
 @main.route('/profile', methods=['POST'])
 def my_form_post():
     global numSamples 
-    a=1
-	if a==1:
-		numSamples = int (request.form['numSamples'])
-		numMaxSamples = maxRowsTable()
-		if (numSamples > numMaxSamples):
-			numSamples = (numMaxSamples-1)
-		time, temp, hum = getLastData()
+	numSamples = int (request.form['numSamples'])
+	numMaxSamples = maxRowsTable()
+	
+	if (numSamples > numMaxSamples):
+		numSamples = (numMaxSamples-1)
+	time, temp, hum = getLastData()
 
     # if request.form['riego_manual'] is not None:
 	# 	comando='H'
