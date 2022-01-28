@@ -1,4 +1,3 @@
-import serial
 from pandas import notnull
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
@@ -25,6 +24,7 @@ curs=conn.cursor()
 
 lock = threading.Lock()
 #################################################################################
+import serial
 arduino = serial.Serial('/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0', 9600)
 #################################################################################
 #FUNCTIONS
