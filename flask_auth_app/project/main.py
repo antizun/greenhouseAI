@@ -112,10 +112,10 @@ def my_form_post():
     #     comando='H'
     #     arduino.write(comando.encode())
     #     arduino.close() #Finalizamos la comunicacion
-
+    global numSamples
     numSamples = request.form.get('numSamples', None)
     if numSamples is not None:
-        global numSamples 
+         
         numSamples = int (request.form['numSamples'])
         if (numSamples>0):
             numMaxSamples = maxRowsTable()
