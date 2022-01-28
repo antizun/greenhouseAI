@@ -106,7 +106,9 @@ def my_form_post():
         'numSamples'	: numSamples
         }
         return render_template('profile.html', **templateData)
-     
+    comando='H'
+    arduino.write(comando.encode())
+    arduino.close() #Finalizamos la comunicacion     
     if (request.form['riego_manual']=='RIEGO_MANUAL'):
         print('RIEGO MANUAL')
         comando='H'
