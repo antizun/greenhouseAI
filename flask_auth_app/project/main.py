@@ -90,9 +90,8 @@ if (numSamples > 101):
 @main.route('/profile', methods=['POST'])
 def my_form_post():
     global numSamples 
-    
-    if (request.form['numSamples']) is not None:
-        numSamples = int (request.form['numSamples'])
+    numSamples = int (request.form['numSamples'])
+    if (numSamples>0):
         numMaxSamples = maxRowsTable()
         if (numSamples > numMaxSamples):
             numSamples = (numMaxSamples-1)
@@ -108,10 +107,16 @@ def my_form_post():
         }
         return render_template('profile.html', **templateData)
      
-    if (request.form['riego_manual']) is not None:
+    if (request.form['riego_manual']=='RIEGO_MANUAL'):
+        print('RIEGO MANUAL')
         comando='H'
         arduino.write(comando.encode())
-        arduino.close() #Finalizamos la comunicacion 
+        arduino.close() #Finalizamos la comunicacion
+    if (request.form['ventilar']=='VENTILAR'):
+        print('VENTILAR')
+        comando='H'
+        arduino.write(comando.encode())
+        arduino.close() #Finalizamos la comunicacion  
 
 @main.route('/plot/temp')
 def plot_temp():
