@@ -88,23 +88,23 @@ if (numSamples > 101):
 
 @main.route('/profile', methods=['POST'])
 def my_form_post():
-    global numSamples 
-    numSamples = int (request.form['numSamples'])
-    if (numSamples>0):
-        numMaxSamples = maxRowsTable()
-        if (numSamples > numMaxSamples):
-            numSamples = (numMaxSamples-1)
+    # global numSamples 
+    # numSamples = int (request.form['numSamples'])
+    # if (numSamples>0):
+    #     numMaxSamples = maxRowsTable()
+    #     if (numSamples > numMaxSamples):
+    #         numSamples = (numMaxSamples-1)
 
-        time, temp, hum = getLastData()
+    #     time, temp, hum = getLastData()
         
-        templateData = {
-        'name'        :current_user.name,
-        'time'		: time,
-        'temp'		: temp,
-        'hum'			: hum,
-        'numSamples'	: numSamples
-        }
-        return render_template('profile.html', **templateData)
+    #     templateData = {
+    #     'name'        :current_user.name,
+    #     'time'		: time,
+    #     'temp'		: temp,
+    #     'hum'			: hum,
+    #     'numSamples'	: numSamples
+    #     }
+    #     return render_template('profile.html', **templateData)
     
     arduino = serial.Serial('/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0', 9600)
     comando='H'
