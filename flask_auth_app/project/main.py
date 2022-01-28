@@ -91,28 +91,28 @@ if (numSamples > 101):
 @main.route('/profile', methods=['POST'])
 def my_form_post():
     global numSamples 
-	numSamples = int(request.form['numSamples'])
-	numMaxSamples = maxRowsTable()
+    
+	if (request.form['numSamples']) is not None:
+		numSamples = int (request.form['numSamples'])
+		numMaxSamples = maxRowsTable()
+		if (numSamples > numMaxSamples):
+			numSamples = (numMaxSamples-1)
+		
+		time, temp, hum = getLastData()
+		
+		templateData = {
+		'name'        :current_user.name,
+		'time'		: time,
+		'temp'		: temp,
+		'hum'			: hum,
+		'numSamples'	: numSamples
+		}
+		return render_template('profile.html', **templateData)
 	
-	if (numSamples > numMaxSamples):
-		numSamples = (numMaxSamples-1)
-	time, temp, hum = getLastData()
-
-     if (request.form['riego_manual']) is not None:
+	if (request.form['riego_manual']) is not None:
 	 	comando='H'
 	 	arduino.write(comando.encode())
-	 	arduino.close() #Finalizamos la comunicacion
-
-    templateData = {
-      'name'        :current_user.name,
-	  'time'		: time,
-      'temp'		: temp,
-      'hum'			: hum,
-      'numSamples'	: numSamples
-	}
-    
-	
-	return render_template('profile.html', **templateData) 
+	 	arduino.close() #Finalizamos la comunicacion 
 
 @main.route('/plot/temp')
 def plot_temp():
