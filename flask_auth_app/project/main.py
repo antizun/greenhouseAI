@@ -110,16 +110,16 @@ def my_form_post():
     comando='H'
     arduino.write(comando.encode())
     arduino.close() #Finalizamos la comunicacion     
-    if (request.form['riego_manual']=='riego_manual'):
-        print('RIEGO MANUAL')
-        comando='H'
-        arduino.write(comando.encode())
-        arduino.close() #Finalizamos la comunicacion
-    if (request.form['ventilar']=='ventilar'):
-        print('VENTILAR')
-        comando='H'
-        arduino.write(comando.encode())
-        arduino.close() #Finalizamos la comunicacion  
+    # if (request.form['riego_manual']=='riego_manual'):
+    #     print('RIEGO MANUAL')
+    #     comando='H'
+    #     arduino.write(comando.encode())
+    #     arduino.close() #Finalizamos la comunicacion
+    # if (request.form['ventilar']=='ventilar'):
+    #     print('VENTILAR')
+    #     comando='H'
+    #     arduino.write(comando.encode())
+    #     arduino.close() #Finalizamos la comunicacion  
 
 @main.route('/plot/temp')
 def plot_temp():
