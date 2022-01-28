@@ -92,10 +92,10 @@ if (numSamples > 101):
 def my_form_post():
     global numSamples 
     
-	if (request.form['numSamples']) is not None:
+    if (request.form['numSamples']) is not None:
 		numSamples = int (request.form['numSamples'])
 		numMaxSamples = maxRowsTable()
-		if (numSamples > numMaxSamples):
+        if (numSamples > numMaxSamples):
 			numSamples = (numMaxSamples-1)
 		
 		time, temp, hum = getLastData()
@@ -109,7 +109,7 @@ def my_form_post():
 		}
 		return render_template('profile.html', **templateData)
 	
-	if (request.form['riego_manual']) is not None:
+    if (request.form['riego_manual']) is not None:
 	 	comando='H'
 	 	arduino.write(comando.encode())
 	 	arduino.close() #Finalizamos la comunicacion 
