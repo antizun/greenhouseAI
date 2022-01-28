@@ -93,8 +93,9 @@ def my_form_post():
     
     arduino = serial.Serial('/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0', 9600)
     comando='H'
-    arduino.write(comando)
-    arduino.close() #Finalizamos la comunicacion     
+    arduino.write(comando.encode(encoding='utf-8'))
+	
+    #arduino.close() #Finalizamos la comunicacion     
     # if (request.form['riego_manual']=='riego_manual'):
     #     print('RIEGO MANUAL')
     #     comando='H'
