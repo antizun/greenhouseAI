@@ -91,7 +91,7 @@ def my_form_post():
 
     riego_manual = request.form.get('riego_manual', None)
     if riego_manual is None:
-        abort(BAD_REQUEST)
+        abort(400)
 
 
     # if (request.form['riego_manual']) is not None:
