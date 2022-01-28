@@ -121,16 +121,15 @@ def my_form_post():
             numMaxSamples = maxRowsTable()
             if (numSamples > numMaxSamples):
                 numSamples = (numMaxSamples-1)
-            time, temp, hum = getLastData()
-            templateData = {
-            'name'        :current_user.name,
-            'time'		: time,
-            'temp'		: temp,
-            'hum'			: hum,
-            'numSamples'	: numSamples
-            }
 
-
+    time, temp, hum = getLastData()
+    templateData = {
+    'name'        :current_user.name,
+    'time'		: time,
+    'temp'		: temp,
+    'hum'			: hum,
+    'numSamples'	: numSamples
+    }
 
     return render_template('profile.html', **templateData)  
 
