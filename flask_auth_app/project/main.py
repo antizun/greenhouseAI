@@ -118,7 +118,7 @@ def my_form_post():
                         answer=arduino.readline()
                         print(answer)
                         arduino.flushInput() #remove data after reading
-						arduino.close()
+                        arduino.close()
                         break
             except KeyboardInterrupt:
                 print("KeyboardInterrupt has been caught.")
