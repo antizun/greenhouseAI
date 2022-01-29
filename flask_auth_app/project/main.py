@@ -118,14 +118,12 @@ def my_form_post():
     #     arduino.write(comando.encode())
     #     arduino.close() #Finalizamos la comunicacion
     global numSamples
-    numSamples = request.form.get('numSamples', None)
-    if numSamples is not None:
-         
-        numSamples = int (request.form['numSamples'])
-        if (numSamples>0):
-            numMaxSamples = maxRowsTable()
-            if (numSamples > numMaxSamples):
-                numSamples = (numMaxSamples-1)
+        
+	numSamples = int (request.form['numSamples'])
+	if (numSamples>0):
+		numMaxSamples = maxRowsTable()
+		if (numSamples > numMaxSamples):
+			numSamples = (numMaxSamples-1)
 
     time, temp, hum = getLastData()
     templateData = {
