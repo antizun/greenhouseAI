@@ -110,7 +110,7 @@ def my_form_post():
             try:
                 while True:
                     cmd='H'
-					#cmd=input("Enter command : ")
+                    #cmd=input("Enter command : ")
                     arduino.write(cmd.encode())
                     time.sleep(0.1) #wait for arduino to answer
                     while arduino.inWaiting()==0: pass
@@ -118,7 +118,7 @@ def my_form_post():
                         answer=arduino.readline()
                         print(answer)
                         arduino.flushInput() #remove data after reading
-						break
+                        break
             except KeyboardInterrupt:
                 print("KeyboardInterrupt has been caught.")
 
