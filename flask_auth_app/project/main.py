@@ -1,3 +1,5 @@
+import serial
+from sys import time
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
 from . import db
@@ -23,7 +25,7 @@ curs=conn.cursor()
 
 lock = threading.Lock()
 #################################################################################
-import serial,time
+
 
 
 #################################################################################
