@@ -125,7 +125,7 @@ def my_form_post():
     global numSamples 
     #numSamples = int (request.form['numSamples'])
     numSamples=10
-	numMaxSamples = maxRowsTable()
+    numMaxSamples = maxRowsTable()
     if (numSamples > numMaxSamples):
         numSamples = (numMaxSamples-1)
     
