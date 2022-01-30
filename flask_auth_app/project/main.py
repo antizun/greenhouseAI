@@ -121,11 +121,11 @@ def my_form_post():
                         break
             except KeyboardInterrupt:
                 print("KeyboardInterrupt has been caught.")
-    arduino.close()
     
     global numSamples 
-    numSamples = int (request.form['numSamples'])
-    numMaxSamples = maxRowsTable()
+    #numSamples = int (request.form['numSamples'])
+    numSamples=10
+	numMaxSamples = maxRowsTable()
     if (numSamples > numMaxSamples):
         numSamples = (numMaxSamples-1)
     
