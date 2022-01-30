@@ -109,7 +109,7 @@ def my_form_post():
             print("{} connected!".format(arduino.port))
             try:
                 while True:
-                    cmd='H'
+                    cmd='RIEGO_MANUAL'
                     #cmd=input("Enter command : ")
                     arduino.write(cmd.encode())
                     time.sleep(0.05) #wait for arduino to answer
