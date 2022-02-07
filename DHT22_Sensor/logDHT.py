@@ -71,7 +71,7 @@ def logData (temp, hum, hgr):
 	#print("hgr:"+str(hgr2))
 	conn=sqlite3.connect(dbname)
 	curs=conn.cursor()
-	curs.execute("INSERT INTO DHT_data values(datetime('now'), (?), (?))", (temp, hum,hgr))
+	curs.execute("INSERT INTO DHT_data values(datetime('now'), (?), (?),(?))", (temp, hum,hgr))
 	conn.commit()
 	conn.close()
 # main function
