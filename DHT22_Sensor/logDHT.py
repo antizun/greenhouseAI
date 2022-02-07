@@ -13,8 +13,10 @@ hgr=1.1
 
 def getDHTdata():	
 
-    global temp, hum, hgr
+	global temp, hum, hgr
+
 	arduino=serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1)
+
 	time.sleep(0.1) #wait for serial to open
 	if arduino.isOpen():
 		print("{} connected!".format(arduino.port))
