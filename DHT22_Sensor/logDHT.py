@@ -31,38 +31,10 @@ def getDHTdata():
 					#print(answer)
 					temp=answer.decode("utf-8")
 					arduino.flushInput() #remove data after reading
-
-			except KeyboardInterrupt:
-				print("KeyboardInterrupt has been caught.")
-
-
-	with serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1) as arduino:
-		time.sleep(0.1) #wait for serial to open
-		if arduino.isOpen():
-			try:
-				_hum='h'
-				#cmd=input("Enter command : ")
-				arduino.write(_hum.encode())
-				time.sleep(5) #wait for arduino to answer
-				while arduino.inWaiting()==0: pass
-				if  arduino.inWaiting()>0: 
 					answer=arduino.readline()
-					#print(answer.decode())
+					#print(answer)
 					hum=answer.decode("utf-8")
 					arduino.flushInput() #remove data after reading
-			except KeyboardInterrupt:
-				print("KeyboardInterrupt has been caught.")
-
-	with serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1) as arduino:
-		time.sleep(0.1) #wait for serial to open
-		if arduino.isOpen():
-			try:
-				_hgr='g'
-				#cmd=input("Enter command : ")
-				arduino.write(_hgr.encode())
-				time.sleep(5) #wait for arduino to answer
-				while arduino.inWaiting()==0: pass
-				if  arduino.inWaiting()>0: 
 					answer=arduino.readline()
 					#print(answer)
 					hgr=answer.decode("utf-8")
@@ -70,6 +42,8 @@ def getDHTdata():
 
 			except KeyboardInterrupt:
 				print("KeyboardInterrupt has been caught.")
+
+
 
 	#hum=22.1
 	#temp=33.3
@@ -92,7 +66,7 @@ def logData (temp, hum, hgr):
 # main function
 def main():
 	while True:
-		#temp, hum, hgr = getDHTdata()
+		temp, hum, hgr = getDHTdata()
 		logData (temp, hum, hgr)
 		time.sleep(sampleFreq)
 		#print(temp)
