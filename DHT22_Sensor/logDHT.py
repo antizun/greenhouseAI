@@ -19,16 +19,16 @@ def getDHTdata():
 		if arduino.isOpen():
 			print("{} connected!".format(arduino.port))
 
-			while True:
-				cmd="t"
-				arduino.write(cmd.encode())
-				time.sleep(5) #wait for arduino to answer
-				while arduino.inWaiting()==0: pass
-				if  arduino.inWaiting()>0: 
-					answer=arduino.readline()
-					print(answer)
-					arduino.flushInput() #remove data after reading
-					break
+			#while True:
+			cmd="t"
+			arduino.write(cmd.encode())
+			time.sleep(5) #wait for arduino to answer
+			while arduino.inWaiting()==0: pass
+			if  arduino.inWaiting()>0: 
+				answer=arduino.readline()
+				print(answer)
+				arduino.flushInput() #remove data after reading
+					#break
 
 
 
