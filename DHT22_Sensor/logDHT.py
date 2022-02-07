@@ -7,15 +7,9 @@ dbname='sensorsData.db'
 sampleFreq = 0.2 # time in seconds ==> Sample each 1 min
 # get data from DHT sensor
 
-temp=1.1
-hum=1.1
-hgr=1.1 
 
 def getDHTdata():	
     
-	_temp=''
-	_hum=''
-	_hgr=''
 
 	ser = serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1)
 	# try:
@@ -23,24 +17,34 @@ def getDHTdata():
 		cmd = "t"
 		comandoBytes = cmd.encode()
 		ser.write(comandoBytes)
-		time.sleep(3)
+		time.sleep(2)
 		read = ser.readline()
-		_temp=read.decode()
+		temp=read.decode()
+		if len(temp)!=0:
+			break
+	while True:
 		cmd = "h"
 		comandoBytes = cmd.encode()
 		ser.write(comandoBytes)
-		time.sleep(3)
+		time.sleep(2)
 		read = ser.readline()
-		_hum=read.decode()
-		time.sleep(3)
+		hum=read.decode()
+		if len(hum)!=0:
+			break
+	while True:
 		cmd = "g"
 		comandoBytes = cmd.encode()
 		ser.write(comandoBytes)
-		time.sleep(3)
+		time.sleep(2)
 		read = ser.readline()
-		_hgr=read.decode()
-		if len(_temp)!=0 and len(_hum)!=0 and len(_hgr)!=0:
-			print("aaa")
+		hgr=read.decode()
+		if len(hgr)!=0:
+			break
+    
+	print(temp)
+	print(hum)
+	print(hgr)
+
 	# except KeyboardInterrupt:
 	# 	print("\nInterrupcion por teclado")
 	# except ValueError as ve:
