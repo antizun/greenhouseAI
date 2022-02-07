@@ -81,9 +81,9 @@ def getDHTdata():
 # log sensor data on database
 def logData (temp, hum, hgr):
 	
-	print("temperatura:"+temp)
-	print("humedad:"+hum)
-	print("hgr:"+hgr)
+	print("temperatura:"+str(temp))
+	print("humedad:"+str(hum))
+	print("hgr:"+str(hgr))
 	#conn=sqlite3.connect(dbname)
 	#curs=conn.cursor()
 	#curs.execute("INSERT INTO DHT_data values(datetime('now'), (?), (?))", (temp, hum,hgr))
