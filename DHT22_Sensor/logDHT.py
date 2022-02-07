@@ -42,6 +42,8 @@ def getDHTdata():
 				arduino.flushInput() #remove data after reading
 
 				arduino.close()
+
+				return temp, hum, hgr
 		except KeyboardInterrupt:
 			print("KeyboardInterrupt has been caught.")
 
@@ -53,7 +55,7 @@ def getDHTdata():
 	# 	hum = round(hum)
 	# 	temp = round(temp, 1)
 	# 	hgr = round(hgr)
-	return temp, hum, hgr
+
 # log sensor data on database
 def logData (temp2, hum2, hgr2):
 	
