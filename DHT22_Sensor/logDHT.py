@@ -36,9 +36,9 @@ def getDHTdata():
 				print("KeyboardInterrupt has been caught.")
 			try:
 				while True:
-					_temp='h'
+					_hum='h'
 					#cmd=input("Enter command : ")
-					arduino.write(_temp.encode())
+					arduino.write(_hum.encode())
 					time.sleep(1) #wait for arduino to answer
 					while arduino.inWaiting()==0: pass
 					if  arduino.inWaiting()>0: 
@@ -52,9 +52,9 @@ def getDHTdata():
 
 			try:
 				while True:
-					_temp='g'
+					_hgr='g'
 					#cmd=input("Enter command : ")
-					arduino.write(_temp.encode())
+					arduino.write(_hgr.encode())
 					time.sleep(1) #wait for arduino to answer
 					while arduino.inWaiting()==0: pass
 					if  arduino.inWaiting()>0: 
