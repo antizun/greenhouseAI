@@ -4,7 +4,7 @@ import sqlite3
 import serial
 #arduino = serial.Serial('/dev/ttyACM0/',9600)
 dbname='sensorsData.db'
-sampleFreq = 1 # time in seconds ==> Sample each 1 min
+sampleFreq = 0.5 # time in seconds ==> Sample each 1 min
 # get data from DHT sensor
 def getDHTdata():	
 	#DHT22Sensor = Adafruit_DHT.DHT22
@@ -27,7 +27,9 @@ def getDHTdata():
 						print(answer)
 						arduino.flushInput() #remove data after reading
 						#break
-
+			except KeyboardInterrupt:
+				print("KeyboardInterrupt has been caught.")
+			try:
 					cmd='HUM'
 					#cmd=input("Enter command : ")
 					arduino.write(cmd.encode())
@@ -38,7 +40,9 @@ def getDHTdata():
 						print(answer)
 						arduino.flushInput() #remove data after reading
 						#break
-
+			except KeyboardInterrupt:
+				print("KeyboardInterrupt has been caught.")
+			try:				
 					cmd='HGR'
 					#cmd=input("Enter command : ")
 					arduino.write(cmd.encode())
