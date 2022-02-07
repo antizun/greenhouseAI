@@ -113,11 +113,11 @@ def my_form_post():
                     #cmd=input("Enter command : ")
                     arduino.write(cmd.encode())
                     time.sleep(0.5) #wait for arduino to answer
-                    while arduino.inWaiting()==0: pass
-                    if  arduino.inWaiting()>0: 
-                        answer=arduino.readline()
-                        print(answer)
-                        arduino.flushInput() #remove data after reading
+                    #while arduino.inWaiting()==0: pass
+                    #if  arduino.inWaiting()>0: 
+                        #answer=arduino.readline()
+                        #print(answer)
+                        #arduino.flushInput() #remove data after reading
                         #break
             except KeyboardInterrupt:
                 print("KeyboardInterrupt has been caught.")
