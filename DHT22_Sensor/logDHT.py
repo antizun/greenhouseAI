@@ -6,9 +6,6 @@ import serial
 dbname='sensorsData.db'
 sampleFreq = 0.2 # time in seconds ==> Sample each 1 min
 # get data from DHT sensor
-temp=0.0
-hum=0.0
-hgr=0.0
 
 def getDHTdata():	
 	#DHT22Sensor = Adafruit_DHT.DHT22
