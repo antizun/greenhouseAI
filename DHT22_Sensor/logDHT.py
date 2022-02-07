@@ -22,6 +22,20 @@ def getDHTdata():
 			time.sleep(0.1)
 			read = ser.readline()
 			print(read)
+			
+			cmd = "h"
+			comandoBytes = cmd.encode()
+			ser.write(comandoBytes)
+			time.sleep(0.1)
+			read = ser.readline()
+			print(read)
+			
+			cmd = "g"
+			comandoBytes = cmd.encode()
+			ser.write(comandoBytes)
+			time.sleep(0.1)
+			read = ser.readline()
+			print(read)
 
 	except KeyboardInterrupt:
 		print("\nInterrupcion por teclado")
