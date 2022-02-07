@@ -32,6 +32,14 @@ def getDHTdata():
 					temp=answer.decode("utf-8")
 					arduino.flushInput() #remove data after reading
 
+			except KeyboardInterrupt:
+				print("KeyboardInterrupt has been caught.")
+
+
+	with serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1) as arduino:
+		time.sleep(0.1) #wait for serial to open
+		if arduino.isOpen():
+			try:
 				_hum='h'
 				#cmd=input("Enter command : ")
 				arduino.write(_hum.encode())
@@ -42,8 +50,13 @@ def getDHTdata():
 					#print(answer.decode())
 					hum=answer.decode("utf-8")
 					arduino.flushInput() #remove data after reading
+			except KeyboardInterrupt:
+				print("KeyboardInterrupt has been caught.")
 
-
+	with serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1) as arduino:
+		time.sleep(0.1) #wait for serial to open
+		if arduino.isOpen():
+			try:
 				_hgr='g'
 				#cmd=input("Enter command : ")
 				arduino.write(_hgr.encode())
