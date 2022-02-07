@@ -20,34 +20,32 @@ def getDHTdata():
 	time.sleep(0.1) #wait for serial to open
 	if arduino.isOpen():
 		print("{} connected!".format(arduino.port))
-		try:
 
-			cmd='t'
-			#cmd=input("Enter command : ")
-			arduino.write(cmd.encode())
-			time.sleep(2) #wait for arduino to answer
-			while arduino.inWaiting()==0: pass
-			if  arduino.inWaiting()>0: 
-				answer=arduino.readline()
-				temp=answer.decode("utf-8")
-				print(answer.decode("utf-8"))
-				arduino.flushInput() #remove data after reading
+		cmd='t'
+		#cmd=input("Enter command : ")
+		arduino.write(cmd.encode())
+		time.sleep(2) #wait for arduino to answer
+		while arduino.inWaiting()==0: pass
+		if  arduino.inWaiting()>0: 
+			answer=arduino.readline()
+			temp=answer.decode("utf-8")
+			print(answer.decode("utf-8"))
+			arduino.flushInput() #remove data after reading
 
-				# answer=arduino.readline()
-				# hum=answer.decode("utf-8")
-				# print(answer.decode("utf-8"))
-				# arduino.flushInput() #remove data after reading
+			# answer=arduino.readline()
+			# hum=answer.decode("utf-8")
+			# print(answer.decode("utf-8"))
+			# arduino.flushInput() #remove data after reading
 
-				# answer=arduino.readline()
-				# hgr=answer.decode("utf-8")
-				# print(answer.decode("utf-8"))
+			# answer=arduino.readline()
+			# hgr=answer.decode("utf-8")
+			# print(answer.decode("utf-8"))
 
-				# arduino.flushInput() #remove data after reading
+			# arduino.flushInput() #remove data after reading
 
-				arduino.close()
+			arduino.close()
 
-		except KeyboardInterrupt:
-			print("KeyboardInterrupt has been caught.")
+
 
     
 	return temp, hum, hgr 
