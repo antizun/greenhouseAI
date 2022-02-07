@@ -11,51 +11,51 @@ def getDHTdata():
 	DHTpin = 16
 	#hum, temp = Adafruit_DHT.read_retry(DHT22Sensor, DHTpin)
 
-	# with serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1) as arduino:
-	# 	time.sleep(0.1) #wait for serial to open
-	# 	if arduino.isOpen():
-	# 		print("{} connected!".format(arduino.port))
-	# 		try:
-	# 			#while True:
-	# 				_temp='TEMP'
-	# 				#cmd=input("Enter command : ")
-	# 				arduino.write(_temp.encode())
-	# 				time.sleep(1) #wait for arduino to answer
-	# 				while arduino.inWaiting()==0: pass
-	# 				if  arduino.inWaiting()>0: 
-	# 					answer=arduino.readline()
-	# 					print(answer)
-	# 					arduino.flushInput() #remove data after reading
-	# 					#break
-	# 		except KeyboardInterrupt:
-	# 			print("KeyboardInterrupt has been caught.")
-	# 		try:
-	# 				_hum='HUM'
-	# 				#cmd=input("Enter command : ")
-	# 				arduino.write(_hum.encode())
-	# 				time.sleep(1) #wait for arduino to answer
-	# 				while arduino.inWaiting()==0: pass
-	# 				if  arduino.inWaiting()>0: 
-	# 					answer=arduino.readline()
-	# 					print(answer)
-	# 					arduino.flushInput() #remove data after reading
-	# 					#break
-	# 		except KeyboardInterrupt:
-	# 			print("KeyboardInterrupt has been caught.")
-	# 		try:				
-	# 				_hgr='HGR'
-	# 				#cmd=input("Enter command : ")
-	# 				arduino.write(_hgr.encode())
-	# 				time.sleep(1) #wait for arduino to answer
-	# 				while arduino.inWaiting()==0: pass
-	# 				if  arduino.inWaiting()>0: 
-	# 					answer=arduino.readline()
-	# 					print(answer)
-	# 					arduino.flushInput() #remove data after reading
-	# 					#break
+	with serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1) as arduino:
+		time.sleep(0.1) #wait for serial to open
+		if arduino.isOpen():
+			print("{} connected!".format(arduino.port))
+			try:
+				#while True:
+					_temp='TEMP'
+					#cmd=input("Enter command : ")
+					arduino.write(_temp.encode())
+					time.sleep(1) #wait for arduino to answer
+					while arduino.inWaiting()==0: pass
+					if  arduino.inWaiting()>0: 
+						answer=arduino.readline()
+						print(answer)
+						arduino.flushInput() #remove data after reading
+						#break
+			except KeyboardInterrupt:
+				print("KeyboardInterrupt has been caught.")
+			# try:
+			# 		_hum='HUM'
+			# 		#cmd=input("Enter command : ")
+			# 		arduino.write(_hum.encode())
+			# 		time.sleep(1) #wait for arduino to answer
+			# 		while arduino.inWaiting()==0: pass
+			# 		if  arduino.inWaiting()>0: 
+			# 			answer=arduino.readline()
+			# 			print(answer)
+			# 			arduino.flushInput() #remove data after reading
+			# 			#break
+			# except KeyboardInterrupt:
+			# 	print("KeyboardInterrupt has been caught.")
+			# try:				
+			# 		_hgr='HGR'
+			# 		#cmd=input("Enter command : ")
+			# 		arduino.write(_hgr.encode())
+			# 		time.sleep(1) #wait for arduino to answer
+			# 		while arduino.inWaiting()==0: pass
+			# 		if  arduino.inWaiting()>0: 
+			# 			answer=arduino.readline()
+			# 			print(answer)
+			# 			arduino.flushInput() #remove data after reading
+			# 			#break
 
-	# 		except KeyboardInterrupt:
-	# 			print("KeyboardInterrupt has been caught.")
+			# except KeyboardInterrupt:
+			# 	print("KeyboardInterrupt has been caught.")
 
 
 	hum=22.1
