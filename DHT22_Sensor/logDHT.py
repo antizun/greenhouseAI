@@ -33,16 +33,16 @@ def getDHTdata():
 				print(answer.decode("utf-8"))
 				arduino.flushInput() #remove data after reading
 
-				answer=arduino.readline()
-				hum=answer.decode("utf-8")
-				print(answer.decode("utf-8"))
-				arduino.flushInput() #remove data after reading
+				# answer=arduino.readline()
+				# hum=answer.decode("utf-8")
+				# print(answer.decode("utf-8"))
+				# arduino.flushInput() #remove data after reading
 
-				answer=arduino.readline()
-				hgr=answer.decode("utf-8")
-				print(answer.decode("utf-8"))
+				# answer=arduino.readline()
+				# hgr=answer.decode("utf-8")
+				# print(answer.decode("utf-8"))
 
-				arduino.flushInput() #remove data after reading
+				# arduino.flushInput() #remove data after reading
 
 				arduino.close()
 
