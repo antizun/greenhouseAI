@@ -112,12 +112,12 @@ def my_form_post():
                     cmd='RIEGO_MANUAL'
                     #cmd=input("Enter command : ")
                     arduino.write(cmd.encode())
-                    time.sleep(0.9) #wait for arduino to answer
+                    time.sleep(1) #wait for arduino to answer
                     #while arduino.inWaiting()==0: pass
-                    #if  arduino.inWaiting()>0: 
-                        #answer=arduino.readline()
-                        #print(answer)
-                        #arduino.flushInput() #remove data after reading
+                    if  arduino.inWaiting()>0: 
+                        answer=arduino.readline()
+                        print(answer)
+                        arduino.flushInput() #remove data after reading
                         #break
             except KeyboardInterrupt:
                 print("KeyboardInterrupt has been caught.")
