@@ -18,7 +18,7 @@ def getDHTdata():
 			try:
 				#while True:
 					cmd='TEMP'
-					cmd=input("Enter command : ")
+					#cmd=input("Enter command : ")
 					arduino.write(cmd.encode())
 					time.sleep(2) #wait for arduino to answer
 					while arduino.inWaiting()==0: pass
@@ -29,7 +29,7 @@ def getDHTdata():
 						#break
 
 					cmd='HUM'
-					cmd=input("Enter command : ")
+					#cmd=input("Enter command : ")
 					arduino.write(cmd.encode())
 					time.sleep(2) #wait for arduino to answer
 					while arduino.inWaiting()==0: pass
@@ -40,7 +40,7 @@ def getDHTdata():
 						#break
 
 					cmd='HGR'
-					cmd=input("Enter command : ")
+					#cmd=input("Enter command : ")
 					arduino.write(cmd.encode())
 					time.sleep(2) #wait for arduino to answer
 					while arduino.inWaiting()==0: pass
