@@ -191,12 +191,13 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    time, temp, hum = getLastData()
+    time, temp, hum, hgr = getLastData()
     templateData = {
        'name'        :current_user.name,
        'time'	     : time,
        'temp'	     : temp,
        'hum'	     : hum,
+	   'hgr'	     : hgr,
        'numSamples'  : numSamples
 	}
 	#name=current_user.name
