@@ -2,7 +2,7 @@ import time
 import sqlite3
 #import Adafruit_DHT
 import serial
-arduino = serial.Serial('/dev/ttyACM0/',9600)
+#arduino = serial.Serial('/dev/ttyACM0/',9600)
 dbname='sensorsData.db'
 sampleFreq = 1*5 # time in seconds ==> Sample each 1 min
 # get data from DHT sensor
