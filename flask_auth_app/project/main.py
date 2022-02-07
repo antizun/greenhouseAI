@@ -113,7 +113,7 @@ def my_form_post():
                     #cmd=input("Enter command : ")
                     arduino.write(cmd.encode())
                     time.sleep(1) #wait for arduino to answer
-                    #while arduino.inWaiting()==0: pass
+                    while arduino.inWaiting()==0: pass
                     if  arduino.inWaiting()>0: 
                         answer=arduino.readline()
                         print(answer)
