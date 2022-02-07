@@ -28,8 +28,8 @@ def getDHTdata():
 					while arduino.inWaiting()==0: pass
 					if  arduino.inWaiting()>0: 
 						answer=arduino.readline()
-						print(answer)
-						temp=float(answer)
+						#print(answer)
+						temp=float(answer.decode())
 						arduino.flushInput() #remove data after reading
 						break
 			except KeyboardInterrupt:
@@ -43,8 +43,8 @@ def getDHTdata():
 					while arduino.inWaiting()==0: pass
 					if  arduino.inWaiting()>0: 
 						answer=arduino.readline()
-						print(answer)
-						hum=float(answer)
+						#print(answer.decode())
+						hum=float(answer.decode())
 						arduino.flushInput() #remove data after reading
 						break
 			except KeyboardInterrupt:
@@ -59,8 +59,8 @@ def getDHTdata():
 					while arduino.inWaiting()==0: pass
 					if  arduino.inWaiting()>0: 
 						answer=arduino.readline()
-						print(answer)
-						hgr=float(answer)
+						#print(answer)
+						hgr=float(answer.decode())
 						arduino.flushInput() #remove data after reading
 						break
 			except KeyboardInterrupt:
@@ -68,12 +68,13 @@ def getDHTdata():
 
 	#hum=22.1
 	#temp=33.3
-	if hum is not None and temp is not None:
+	if hum is not None and temp is not None and hgr is not None:
 		hum = round(hum)
 		temp = round(temp, 1)
+		hgr = round(hgr)
 	return temp, hum
 # log sensor data on database
-def logData (temp, hum):
+def logData (temp, hum, hgr):
 	conn=sqlite3.connect(dbname)
 	curs=conn.cursor()
 	curs.execute("INSERT INTO DHT_data values(datetime('now'), (?), (?))", (temp, hum,hgr))
@@ -83,7 +84,7 @@ def logData (temp, hum):
 def main():
 	while True:
 		temp, hum = getDHTdata()
-		logData (temp, hum)
+		logData (temp, hum, hgr)
 		time.sleep(sampleFreq)
 		#print(temp)
 		#print(hum)
