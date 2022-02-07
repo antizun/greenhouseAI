@@ -16,24 +16,23 @@ def getDHTdata():
 	ser = serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1)
 	try:
 		while True:
-			time.sleep(4)
 			cmd = "t"
 			comandoBytes = cmd.encode()
 			ser.write(comandoBytes)
-			time.sleep(4)
+			time.sleep(3)
 			read = ser.readline()
 			print(read)
 			cmd = "h"
 			comandoBytes = cmd.encode()
 			ser.write(comandoBytes)
-			time.sleep(4)
+			time.sleep(3)
 			read = ser.readline()
 			print(read)
-			time.sleep(4)
+			time.sleep(3)
 			cmd = "g"
 			comandoBytes = cmd.encode()
 			ser.write(comandoBytes)
-			time.sleep(4)
+			time.sleep(3)
 			read = ser.readline()
 			print(read)
 
