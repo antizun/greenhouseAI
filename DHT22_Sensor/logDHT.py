@@ -29,7 +29,7 @@ def getDHTdata():
 					if  arduino.inWaiting()>0: 
 						answer=arduino.readline()
 						#print(answer)
-						temp=float(answer.decode("utf-8"))
+						temp=answer.decode("utf-8")
 						arduino.flushInput() #remove data after reading
 						break
 			except KeyboardInterrupt:
@@ -44,7 +44,7 @@ def getDHTdata():
 					if  arduino.inWaiting()>0: 
 						answer=arduino.readline()
 						#print(answer.decode())
-						hum=float(answer.decode("utf-8"))
+						hum=answer.decode("utf-8")
 						arduino.flushInput() #remove data after reading
 						break
 			except KeyboardInterrupt:
@@ -60,7 +60,7 @@ def getDHTdata():
 					if  arduino.inWaiting()>0: 
 						answer=arduino.readline()
 						#print(answer)
-						hgr=float(answer.decode("utf-8"))
+						hgr=answer.decode("utf-8")
 						arduino.flushInput() #remove data after reading
 						break
 			except KeyboardInterrupt:
@@ -68,10 +68,10 @@ def getDHTdata():
 
 	#hum=22.1
 	#temp=33.3
-	if hum is not None and temp is not None and hgr is not None:
-		hum = round(hum)
-		temp = round(temp, 1)
-		hgr = round(hgr)
+	# if hum is not None and temp is not None and hgr is not None:
+	# 	hum = round(hum)
+	# 	temp = round(temp, 1)
+	# 	hgr = round(hgr)
 	return temp, hum, hgr
 # log sensor data on database
 def logData (temp, hum, hgr):
