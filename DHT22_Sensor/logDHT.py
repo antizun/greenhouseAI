@@ -15,20 +15,20 @@ def getDHTdata():
 		time.sleep(0.1) #wait for serial to open
 		if arduino.isOpen():
 			print("{} connected!".format(arduino.port))
-			try:
-				while True:
-					_temp='t'
-					#cmd=input("Enter command : ")
-					arduino.write(_temp.encode())
-					time.sleep(1) #wait for arduino to answer
-					while arduino.inWaiting()==0: pass
-					if  arduino.inWaiting()>0: 
-						answer=arduino.readline()
-						print(answer)
-						arduino.flushInput() #remove data after reading
-						break
-			except KeyboardInterrupt:
-				print("KeyboardInterrupt has been caught.")
+			#try:
+			while True:
+				_temp='t'
+				#cmd=input("Enter command : ")
+				arduino.write(_temp.encode())
+				time.sleep(1) #wait for arduino to answer
+				while arduino.inWaiting()==0: pass
+				if  arduino.inWaiting()>0: 
+					answer=arduino.readline()
+					print(answer)
+					arduino.flushInput() #remove data after reading
+					break
+			#except KeyboardInterrupt:
+				#print("KeyboardInterrupt has been caught.")
 			# try:
 			# 		_hum='HUM'
 			# 		#cmd=input("Enter command : ")
