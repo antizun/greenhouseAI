@@ -7,22 +7,24 @@ dbname='sensorsData.db'
 sampleFreq = 0.2 # time in seconds ==> Sample each 1 min
 # get data from DHT sensor
 
-global temp, hum, hgr 
+#global temp, hum, hgr 
 
 def getDHTdata():	
 	#DHT22Sensor = Adafruit_DHT.DHT22
 	DHTpin = 16
 	#hum, temp = Adafruit_DHT.read_retry(DHT22Sensor, DHTpin)
-
+	temp=0.0
+	hum=0.0
+	hgr=0.0
 	with serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1) as arduino:
 		time.sleep(0.1) #wait for serial to open
 		if arduino.isOpen():
 			print("{} connected!".format(arduino.port))
 			try:
 
-				_temp='t'
+				cmd='t'
 				#cmd=input("Enter command : ")
-				arduino.write(_temp.encode())
+				arduino.write(cmd.encode())
 				time.sleep(5) #wait for arduino to answer
 				#while arduino.inWaiting()==0: pass
 				if  arduino.inWaiting()>0: 
