@@ -20,49 +20,41 @@ def getDHTdata():
 		if arduino.isOpen():
 			print("{} connected!".format(arduino.port))
 			try:
-				while True:
-					_temp='t'
-					#cmd=input("Enter command : ")
-					arduino.write(_temp.encode())
-					time.sleep(1) #wait for arduino to answer
-					while arduino.inWaiting()==0: pass
-					if  arduino.inWaiting()>0: 
-						answer=arduino.readline()
-						#print(answer)
-						temp=answer.decode("utf-8")
-						arduino.flushInput() #remove data after reading
-						break
-			except KeyboardInterrupt:
-				print("KeyboardInterrupt has been caught.")
-			try:
-				while True:
-					_hum='h'
-					#cmd=input("Enter command : ")
-					arduino.write(_hum.encode())
-					time.sleep(1) #wait for arduino to answer
-					while arduino.inWaiting()==0: pass
-					if  arduino.inWaiting()>0: 
-						answer=arduino.readline()
-						#print(answer.decode())
-						hum=answer.decode("utf-8")
-						arduino.flushInput() #remove data after reading
-						break
-			except KeyboardInterrupt:
-				print("KeyboardInterrupt has been caught.")
 
-			try:
-				while True:
-					_hgr='g'
-					#cmd=input("Enter command : ")
-					arduino.write(_hgr.encode())
-					time.sleep(1) #wait for arduino to answer
-					while arduino.inWaiting()==0: pass
-					if  arduino.inWaiting()>0: 
-						answer=arduino.readline()
-						#print(answer)
-						hgr=answer.decode("utf-8")
-						arduino.flushInput() #remove data after reading
-						break
+				_temp='t'
+				#cmd=input("Enter command : ")
+				arduino.write(_temp.encode())
+				time.sleep(1) #wait for arduino to answer
+				while arduino.inWaiting()==0: pass
+				if  arduino.inWaiting()>0: 
+					answer=arduino.readline()
+					#print(answer)
+					temp=answer.decode("utf-8")
+					arduino.flushInput() #remove data after reading
+
+				_hum='h'
+				#cmd=input("Enter command : ")
+				arduino.write(_hum.encode())
+				time.sleep(1) #wait for arduino to answer
+				while arduino.inWaiting()==0: pass
+				if  arduino.inWaiting()>0: 
+					answer=arduino.readline()
+					#print(answer.decode())
+					hum=answer.decode("utf-8")
+					arduino.flushInput() #remove data after reading
+
+
+				_hgr='g'
+				#cmd=input("Enter command : ")
+				arduino.write(_hgr.encode())
+				time.sleep(1) #wait for arduino to answer
+				while arduino.inWaiting()==0: pass
+				if  arduino.inWaiting()>0: 
+					answer=arduino.readline()
+					#print(answer)
+					hgr=answer.decode("utf-8")
+					arduino.flushInput() #remove data after reading
+
 			except KeyboardInterrupt:
 				print("KeyboardInterrupt has been caught.")
 
