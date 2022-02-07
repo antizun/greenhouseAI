@@ -13,9 +13,9 @@ def getDHTdata():
 	#DHT22Sensor = Adafruit_DHT.DHT22
 	DHTpin = 16
 	#hum, temp = Adafruit_DHT.read_retry(DHT22Sensor, DHTpin)
-	temp=0.0
-	hum=0.0
-	hgr=0.0
+	# temp=0.0
+	# hum=0.0
+	# hgr=0.0
 	arduino=serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1)
 	time.sleep(0.1) #wait for serial to open
 	if arduino.isOpen():
@@ -41,10 +41,11 @@ def getDHTdata():
 				hgr=answer.decode("utf-8")
 				arduino.flushInput() #remove data after reading
 
+				arduino.close()
 		except KeyboardInterrupt:
 			print("KeyboardInterrupt has been caught.")
 
-
+    
 
 	#hum=22.1
 	#temp=33.3
