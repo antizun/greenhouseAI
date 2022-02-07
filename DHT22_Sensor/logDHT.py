@@ -13,24 +13,23 @@ hgr=1.1
 
 def getDHTdata():	
 
-	print('Running. Press CTRL-C to exit.')
-	with serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1) as arduino:
-		time.sleep(0.1) #wait for serial to open
-		if arduino.isOpen():
-			print("{} connected!".format(arduino.port))
+	ser = serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", baudrate=9600)
+	try:
+		while True:
+			cmd = 't'
+			comandoBytes = cmd.encode()
+			ser.write(comandoBytes)
+			time.sleep(0.1)
+			read = ser.readline()
+			print(read)
 
-			#while True:
-			cmd="t"
-			arduino.write(cmd.encode())
-			time.sleep(5) #wait for arduino to answer
-			while arduino.inWaiting()==0: pass
-			if  arduino.inWaiting()>0: 
-				answer=arduino.readline()
-				print(answer)
-				arduino.flushInput() #remove data after reading
-					#break
-
-
+	except KeyboardInterrupt:
+		print("\nInterrupcion por teclado")
+	except ValueError as ve:
+		print(ve)
+		print("Otra interrupcion")
+	finally:
+		ser.close()
 
 
     
