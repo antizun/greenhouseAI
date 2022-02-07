@@ -86,7 +86,7 @@ def logData (temp, hum, hgr):
 # main function
 def main():
 	while True:
-		temp, hum = getDHTdata()
+		temp, hum, hgr = getDHTdata()
 		logData (temp, hum, hgr)
 		time.sleep(sampleFreq)
 		#print(temp)
