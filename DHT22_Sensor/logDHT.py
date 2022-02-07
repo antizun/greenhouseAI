@@ -25,7 +25,7 @@ def getDHTdata():
 				#cmd=input("Enter command : ")
 				arduino.write(_temp.encode())
 				time.sleep(5) #wait for arduino to answer
-				while arduino.inWaiting()==0: pass
+				#while arduino.inWaiting()==0: pass
 				if  arduino.inWaiting()>0: 
 					answer=arduino.readline()
 					#print(answer)
