@@ -112,7 +112,7 @@ def my_form_post():
                     cmd='RIEGO_MANUAL'
                     #cmd=input("Enter command : ")
                     arduino.write(cmd.encode())
-                    time.sleep(0.5) #wait for arduino to answer
+                    time.sleep(0.9) #wait for arduino to answer
                     #while arduino.inWaiting()==0: pass
                     #if  arduino.inWaiting()>0: 
                         #answer=arduino.readline()
