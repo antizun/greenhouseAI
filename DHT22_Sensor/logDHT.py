@@ -6,6 +6,10 @@ import serial
 dbname='sensorsData.db'
 sampleFreq = 0.2 # time in seconds ==> Sample each 1 min
 # get data from DHT sensor
+temp=0.0
+hum=0.0
+hgr=0.0
+
 def getDHTdata():	
 	#DHT22Sensor = Adafruit_DHT.DHT22
 	DHTpin = 16
@@ -15,51 +19,55 @@ def getDHTdata():
 		time.sleep(0.1) #wait for serial to open
 		if arduino.isOpen():
 			print("{} connected!".format(arduino.port))
-			#try:
-			while True:
-				_temp='t'
-				#cmd=input("Enter command : ")
-				arduino.write(_temp.encode())
-				time.sleep(1) #wait for arduino to answer
-				while arduino.inWaiting()==0: pass
-				if  arduino.inWaiting()>0: 
-					answer=arduino.readline()
-					print(answer)
-					arduino.flushInput() #remove data after reading
-					break
-			#except KeyboardInterrupt:
-				#print("KeyboardInterrupt has been caught.")
-			# try:
-			# 		_hum='HUM'
-			# 		#cmd=input("Enter command : ")
-			# 		arduino.write(_hum.encode())
-			# 		time.sleep(1) #wait for arduino to answer
-			# 		while arduino.inWaiting()==0: pass
-			# 		if  arduino.inWaiting()>0: 
-			# 			answer=arduino.readline()
-			# 			print(answer)
-			# 			arduino.flushInput() #remove data after reading
-			# 			#break
-			# except KeyboardInterrupt:
-			# 	print("KeyboardInterrupt has been caught.")
-			# try:				
-			# 		_hgr='HGR'
-			# 		#cmd=input("Enter command : ")
-			# 		arduino.write(_hgr.encode())
-			# 		time.sleep(1) #wait for arduino to answer
-			# 		while arduino.inWaiting()==0: pass
-			# 		if  arduino.inWaiting()>0: 
-			# 			answer=arduino.readline()
-			# 			print(answer)
-			# 			arduino.flushInput() #remove data after reading
-			# 			#break
+			try:
+				while True:
+					_temp='t'
+					#cmd=input("Enter command : ")
+					arduino.write(_temp.encode())
+					time.sleep(1) #wait for arduino to answer
+					while arduino.inWaiting()==0: pass
+					if  arduino.inWaiting()>0: 
+						answer=arduino.readline()
+						print(answer)
+						temp=float(answer)
+						arduino.flushInput() #remove data after reading
+						break
+			except KeyboardInterrupt:
+				print("KeyboardInterrupt has been caught.")
+			try:
+				while True:
+					_temp='h'
+					#cmd=input("Enter command : ")
+					arduino.write(_temp.encode())
+					time.sleep(1) #wait for arduino to answer
+					while arduino.inWaiting()==0: pass
+					if  arduino.inWaiting()>0: 
+						answer=arduino.readline()
+						print(answer)
+						hum=float(answer)
+						arduino.flushInput() #remove data after reading
+						break
+			except KeyboardInterrupt:
+				print("KeyboardInterrupt has been caught.")
 
-			# except KeyboardInterrupt:
-			# 	print("KeyboardInterrupt has been caught.")
+			try:
+				while True:
+					_temp='g'
+					#cmd=input("Enter command : ")
+					arduino.write(_temp.encode())
+					time.sleep(1) #wait for arduino to answer
+					while arduino.inWaiting()==0: pass
+					if  arduino.inWaiting()>0: 
+						answer=arduino.readline()
+						print(answer)
+						hgr=float(answer)
+						arduino.flushInput() #remove data after reading
+						break
+			except KeyboardInterrupt:
+				print("KeyboardInterrupt has been caught.")
 
-
-	hum=22.1
-	temp=33.3
+	#hum=22.1
+	#temp=33.3
 	if hum is not None and temp is not None:
 		hum = round(hum)
 		temp = round(temp, 1)
@@ -68,7 +76,7 @@ def getDHTdata():
 def logData (temp, hum):
 	conn=sqlite3.connect(dbname)
 	curs=conn.cursor()
-	curs.execute("INSERT INTO DHT_data values(datetime('now'), (?), (?))", (temp, hum))
+	curs.execute("INSERT INTO DHT_data values(datetime('now'), (?), (?))", (temp, hum,hgr))
 	conn.commit()
 	conn.close()
 # main function
@@ -77,7 +85,7 @@ def main():
 		temp, hum = getDHTdata()
 		logData (temp, hum)
 		time.sleep(sampleFreq)
-		print(temp)
-		print(hum)
+		#print(temp)
+		#print(hum)
 # ------------ Execute program 
 main()
