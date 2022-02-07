@@ -19,20 +19,20 @@ def getDHTdata():
 			cmd = "t"
 			comandoBytes = cmd.encode()
 			ser.write(comandoBytes)
-			time.sleep(0.5)
+			time.sleep(2)
 			read = ser.readline()
 			print(read)
 			cmd = "h"
 			comandoBytes = cmd.encode()
 			ser.write(comandoBytes)
-			time.sleep(0.5)
+			time.sleep(2)
 			read = ser.readline()
 			print(read)
 			
 			cmd = "g"
 			comandoBytes = cmd.encode()
 			ser.write(comandoBytes)
-			time.sleep(0.5)
+			time.sleep(2)
 			read = ser.readline()
 			print(read)
 
