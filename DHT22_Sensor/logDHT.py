@@ -12,37 +12,42 @@ hum=1.1
 hgr=1.1 
 
 def getDHTdata():	
+    
+	_temp=''
+	_hum=''
+	_hgr=''
 
 	ser = serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1)
-	try:
-		while True:
-			cmd = "t"
-			comandoBytes = cmd.encode()
-			ser.write(comandoBytes)
-			time.sleep(3)
-			read = ser.readline()
-			print(read)
-			cmd = "h"
-			comandoBytes = cmd.encode()
-			ser.write(comandoBytes)
-			time.sleep(3)
-			read = ser.readline()
-			print(read)
-			time.sleep(3)
-			cmd = "g"
-			comandoBytes = cmd.encode()
-			ser.write(comandoBytes)
-			time.sleep(3)
-			read = ser.readline()
-			print(read)
-
-	except KeyboardInterrupt:
-		print("\nInterrupcion por teclado")
-	except ValueError as ve:
-		print(ve)
-		print("Otra interrupcion")
-	finally:
-		ser.close()
+	# try:
+	while True:
+		cmd = "t"
+		comandoBytes = cmd.encode()
+		ser.write(comandoBytes)
+		time.sleep(3)
+		read = ser.readline()
+		_temp=read.decode()
+		cmd = "h"
+		comandoBytes = cmd.encode()
+		ser.write(comandoBytes)
+		time.sleep(3)
+		read = ser.readline()
+		_hum=read.decode()
+		time.sleep(3)
+		cmd = "g"
+		comandoBytes = cmd.encode()
+		ser.write(comandoBytes)
+		time.sleep(3)
+		read = ser.readline()
+		_hgr=read.decode()
+		if len(_temp)!=0 and len(_hum)!=0 and len(_hgr)!=0:
+			print("aaa")
+	# except KeyboardInterrupt:
+	# 	print("\nInterrupcion por teclado")
+	# except ValueError as ve:
+	# 	print(ve)
+	# 	print("Otra interrupcion")
+	# finally:
+	ser.close()
 
 
     
