@@ -75,7 +75,8 @@ def getDHTdata():
 	return temp, hum, hgr
 # log sensor data on database
 def logData (temp, hum, hgr):
-    print("temperatura:"+temp)
+	
+	print("temperatura:"+temp)
 	print("humedad:"+hum)
 	print("hgr:"+hgr)
 	#conn=sqlite3.connect(dbname)
