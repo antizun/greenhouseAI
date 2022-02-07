@@ -7,6 +7,8 @@ dbname='sensorsData.db'
 sampleFreq = 0.2 # time in seconds ==> Sample each 1 min
 # get data from DHT sensor
 
+global temp, hum, hgr 
+
 def getDHTdata():	
 	#DHT22Sensor = Adafruit_DHT.DHT22
 	DHTpin = 16
