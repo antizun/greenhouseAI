@@ -17,7 +17,7 @@ def getDHTdata():
 		cmd = "t"
 		comandoBytes = cmd.encode()
 		ser.write(comandoBytes)
-		time.sleep(2)
+		time.sleep(5)
 		read = ser.readline()
 		temp=read.decode()
 		if len(temp)!=0:
@@ -26,7 +26,7 @@ def getDHTdata():
 		cmd = "h"
 		comandoBytes = cmd.encode()
 		ser.write(comandoBytes)
-		time.sleep(2)
+		time.sleep(5)
 		read = ser.readline()
 		hum=read.decode()
 		if len(hum)!=0:
@@ -35,7 +35,7 @@ def getDHTdata():
 		cmd = "g"
 		comandoBytes = cmd.encode()
 		ser.write(comandoBytes)
-		time.sleep(2)
+		time.sleep(5)
 		read = ser.readline()
 		hgr=read.decode()
 		if len(hgr)!=0:
