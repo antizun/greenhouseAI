@@ -7,10 +7,12 @@ dbname='sensorsData.db'
 sampleFreq = 0.2 # time in seconds ==> Sample each 1 min
 # get data from DHT sensor
 
-#global temp, hum, hgr 
+temp=1.1
+hum=1.1
+hgr=1.1 
 
 def getDHTdata():	
-	global temp, hum, hgr
+
 	arduino=serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1)
 	time.sleep(0.1) #wait for serial to open
 	if arduino.isOpen():
