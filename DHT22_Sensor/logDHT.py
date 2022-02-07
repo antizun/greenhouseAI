@@ -13,7 +13,7 @@ hgr=1.1
 
 def getDHTdata():	
 
-	ser = serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", baudrate=9600)
+	ser = serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1)
 	try:
 		while True:
 			cmd = "t"
