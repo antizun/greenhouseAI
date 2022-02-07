@@ -30,14 +30,18 @@ def getDHTdata():
 			if  arduino.inWaiting()>0: 
 				answer=arduino.readline()
 				temp=answer.decode("utf-8")
+				print(answer.decode("utf-8"))
 				arduino.flushInput() #remove data after reading
 
 				answer=arduino.readline()
 				hum=answer.decode("utf-8")
+				print(answer.decode("utf-8"))
 				arduino.flushInput() #remove data after reading
 
 				answer=arduino.readline()
 				hgr=answer.decode("utf-8")
+				print(answer.decode("utf-8"))
+
 				arduino.flushInput() #remove data after reading
 
 				arduino.close()
@@ -57,9 +61,10 @@ def getDHTdata():
 # log sensor data on database
 def logData (temp2, hum2, hgr2):
 	
-	print("temperatura:"+str(temp2))
-	print("humedad:"+str(hum2))
-	print("hgr:"+str(hgr2))
+	print("-->")
+	#print("temperatura:"+str(temp2))
+	#print("humedad:"+str(hum2))
+	#print("hgr:"+str(hgr2))
 	#conn=sqlite3.connect(dbname)
 	#curs=conn.cursor()
 	#curs.execute("INSERT INTO DHT_data values(datetime('now'), (?), (?))", (temp, hum,hgr))
