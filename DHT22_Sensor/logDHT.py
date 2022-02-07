@@ -10,12 +10,7 @@ sampleFreq = 0.2 # time in seconds ==> Sample each 1 min
 #global temp, hum, hgr 
 
 def getDHTdata():	
-	#DHT22Sensor = Adafruit_DHT.DHT22
-	DHTpin = 16
-	#hum, temp = Adafruit_DHT.read_retry(DHT22Sensor, DHTpin)
-	# temp=0.0
-	# hum=0.0
-	# hgr=0.0
+	global temp, hum, hgr
 	arduino=serial.Serial("/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0", 9600, timeout=1)
 	time.sleep(0.1) #wait for serial to open
 	if arduino.isOpen():
@@ -25,30 +20,28 @@ def getDHTdata():
 			cmd='t'
 			#cmd=input("Enter command : ")
 			arduino.write(cmd.encode())
-			time.sleep(5) #wait for arduino to answer
+			time.sleep(1) #wait for arduino to answer
 			#while arduino.inWaiting()==0: pass
 			if  arduino.inWaiting()>0: 
 				answer=arduino.readline()
-				#print(answer)
 				temp=answer.decode("utf-8")
 				arduino.flushInput() #remove data after reading
+
 				answer=arduino.readline()
-				#print(answer)
 				hum=answer.decode("utf-8")
 				arduino.flushInput() #remove data after reading
+
 				answer=arduino.readline()
-				#print(answer)
 				hgr=answer.decode("utf-8")
 				arduino.flushInput() #remove data after reading
 
 				arduino.close()
 
-				return temp, hum, hgr
 		except KeyboardInterrupt:
 			print("KeyboardInterrupt has been caught.")
 
     
-
+	return temp, hum, hgr 
 	#hum=22.1
 	#temp=33.3
 	# if hum is not None and temp is not None and hgr is not None:
