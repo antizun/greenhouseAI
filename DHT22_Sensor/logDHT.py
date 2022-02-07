@@ -16,8 +16,8 @@ def getDHTdata():
 		if arduino.isOpen():
 			print("{} connected!".format(arduino.port))
 			try:
-				#while True:
-					_temp='TEMP'
+				while True:
+					_temp='t'
 					#cmd=input("Enter command : ")
 					arduino.write(_temp.encode())
 					time.sleep(1) #wait for arduino to answer
@@ -26,7 +26,7 @@ def getDHTdata():
 						answer=arduino.readline()
 						print(answer)
 						arduino.flushInput() #remove data after reading
-						#break
+						break
 			except KeyboardInterrupt:
 				print("KeyboardInterrupt has been caught.")
 			# try:
