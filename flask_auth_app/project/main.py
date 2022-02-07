@@ -108,8 +108,8 @@ def my_form_post():
         if arduino.isOpen():
             print("{} connected!".format(arduino.port))
             try:
-                while True:
-                    cmd='R'
+                #while True:
+                    cmd='RIEGO_MANUAL'
                     #cmd=input("Enter command : ")
                     arduino.write(cmd.encode())
                     time.sleep(0.5) #wait for arduino to answer
@@ -118,7 +118,7 @@ def my_form_post():
                         answer=arduino.readline()
                         print(answer)
                         arduino.flushInput() #remove data after reading
-                        break
+                        #break
             except KeyboardInterrupt:
                 print("KeyboardInterrupt has been caught.")
     
