@@ -24,7 +24,7 @@ def getDHTdata():
 				_temp='t'
 				#cmd=input("Enter command : ")
 				arduino.write(_temp.encode())
-				time.sleep(1) #wait for arduino to answer
+				time.sleep(5) #wait for arduino to answer
 				while arduino.inWaiting()==0: pass
 				if  arduino.inWaiting()>0: 
 					answer=arduino.readline()
@@ -35,7 +35,7 @@ def getDHTdata():
 				_hum='h'
 				#cmd=input("Enter command : ")
 				arduino.write(_hum.encode())
-				time.sleep(1) #wait for arduino to answer
+				time.sleep(5) #wait for arduino to answer
 				while arduino.inWaiting()==0: pass
 				if  arduino.inWaiting()>0: 
 					answer=arduino.readline()
@@ -47,7 +47,7 @@ def getDHTdata():
 				_hgr='g'
 				#cmd=input("Enter command : ")
 				arduino.write(_hgr.encode())
-				time.sleep(1) #wait for arduino to answer
+				time.sleep(5) #wait for arduino to answer
 				while arduino.inWaiting()==0: pass
 				if  arduino.inWaiting()>0: 
 					answer=arduino.readline()
