@@ -64,17 +64,16 @@ def getDHTdata():
 	# 	hgr = round(hgr)
 
 # log sensor data on database
-def logData (temp2, hum2, hgr2):
+def logData (temp, hum, hgr):
 	
-	print("-->")
 	#print("temperatura:"+str(temp2))
 	#print("humedad:"+str(hum2))
 	#print("hgr:"+str(hgr2))
-	#conn=sqlite3.connect(dbname)
-	#curs=conn.cursor()
-	#curs.execute("INSERT INTO DHT_data values(datetime('now'), (?), (?))", (temp, hum,hgr))
-	#conn.commit()
-	#conn.close()
+	conn=sqlite3.connect(dbname)
+	curs=conn.cursor()
+	curs.execute("INSERT INTO DHT_data values(datetime('now'), (?), (?))", (temp, hum,hgr))
+	conn.commit()
+	conn.close()
 # main function
 def main():
 	while True:

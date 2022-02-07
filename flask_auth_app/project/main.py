@@ -36,7 +36,8 @@ def getLastData():
 			time = str(row[0])
 			temp = row[1]
 			hum = row[2]
-		return time, temp, hum
+			hgr = row[3]
+		return time, temp, hum, hgr
 	finally:
 	        lock.release()
 		#conn.close()
@@ -109,7 +110,7 @@ def my_form_post():
             print("{} connected!".format(arduino.port))
             try:
                 #while True:
-                    cmd='RIEGO_MANUAL'
+                    cmd='r'
                     #cmd=input("Enter command : ")
                     arduino.write(cmd.encode())
                     time.sleep(2) #wait for arduino to answer
@@ -129,13 +130,14 @@ def my_form_post():
     if (numSamples > numMaxSamples):
         numSamples = (numMaxSamples-1)
     
-    time, temp, hum = getLastData()
+    time, temp, hum, hgr = getLastData()
     
     templateData = {
       'name'        :current_user.name,
       'time'		: time,
       'temp'		: temp,
       'hum'			: hum,
+	  'hgr'			: hgr,
       'numSamples'	: numSamples
     }
     return render_template('profile.html', **templateData) 
