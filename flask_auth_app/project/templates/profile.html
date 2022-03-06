@@ -35,8 +35,8 @@
       valueFontColor: "yellow",
       titleFontColor: "yellow",
       min: '0',
-      max: '100',
-      title: "HGR",
+      max: '1023',
+      title: "hygrometer",
       label: "%"
     });    
   
@@ -49,12 +49,15 @@
 <hr>
 <h3> Last Sensors Reading: {{ time }} ==> <a href="#" onclick="javascript:location.reload();" tarjet="_self" class="button">REFRESH</a></h3>	
 <hr>
+<!--
 <h3> HISTORICAL DATA </h3>
 <p> Enter number of samples to retrieve:
+-->
+<!--  
 <form id="form1" method="POST">
-  <!--<input name="numSamples" value= {{numSamples}}>-->
+  <input name="numSamples" value= {{numSamples}}>
   <input type="submit" id="riego_manual" value="RIEGO MANUAL" name="riego_manual" class="button">
-</form></p>
+</form></p>-->
 <!--
 <form id="form2" method="POST">
   <input type="submit" value="riego_manual" id="riego_manual" name="riego_manual" /> 
